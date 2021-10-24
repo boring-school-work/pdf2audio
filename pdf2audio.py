@@ -1,7 +1,3 @@
-# convert pdf file to doc file
-# using pdf2docx module
-
-
 from pdf2docx import parse
 from typing import Tuple
 import docx2txt
