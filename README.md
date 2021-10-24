@@ -3,6 +3,7 @@ Converts pdf file to word and converts the text to speech.
 
 ## Running the code
 ```bash
+# Move to directory
 cd pdf2audio
 
 # install the dependencies using pip
