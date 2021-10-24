@@ -1,0 +1,15 @@
+certifi==2021.10.8
+charset-normalizer==2.0.7
+click==8.0.3
+docx2txt==0.8
+fire==0.4.0
+gTTS==2.2.3
+idna==3.3
+lxml==4.6.3
+pdf2docx==0.5.1
+PyMuPDF==1.19.1
+python-docx==0.8.11
+requests==2.26.0
+six==1.16.0
+termcolor==1.1.0
+urllib3==1.26.7
