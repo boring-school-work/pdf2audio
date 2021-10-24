@@ -6,6 +6,7 @@ from pdf2docx import parse
 from typing import Tuple
 import docx2txt
 from gtts import gTTS
+import os.path
 
 
 def convert_pdf_to_doc(pdf_file_path: str, doc_file_path: str) -> Tuple[str, str]:
@@ -20,9 +21,14 @@ def convert_pdf_to_doc(pdf_file_path: str, doc_file_path: str) -> Tuple[str, str
 
 
 pdf_file_path = input("Enter pdf file path: ")
-doc_file_path = pdf_file_path.replace(".pdf", ".doc")
-convert_pdf_to_doc(pdf_file_path, doc_file_path)
-tts = gTTS(text=docx2txt.process(doc_file_path), lang="en")
-tts.save(pdf_file_path.replace(".pdf", ".mp3"))
+
+if os.path.isfile(pdf_file_path):
+    doc_file_path = pdf_file_path.replace(".pdf", ".doc")
+    convert_pdf_to_doc(pdf_file_path, doc_file_path)
+    tts = gTTS(text=docx2txt.process(doc_file_path), lang="en")
+    tts.save(pdf_file_path.replace(".pdf", ".mp3"))
+else:
+    print("File not found")
+    exit(1)
 
 print("Done")
