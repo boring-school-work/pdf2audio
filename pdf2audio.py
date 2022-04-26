@@ -18,13 +18,27 @@ def convert_pdf_to_doc(pdf_file_path: str, doc_file_path: str) -> Tuple[str, str
 
 pdf_file_path = input("Enter pdf file path: ")
 
-if os.path.isfile(pdf_file_path):
-    doc_file_path = pdf_file_path.replace(".pdf", ".doc")
-    convert_pdf_to_doc(pdf_file_path, doc_file_path)
-    tts = gTTS(text=docx2txt.process(doc_file_path), lang="en")
-    tts.save(pdf_file_path.replace(".pdf", ".mp3"))
-else:
+if not os.path.isfile(pdf_file_path):
+    # check if file exists
     print("File not found")
     exit(1)
+elif pdf_file_path.split(".")[-1] != "pdf":
+    # check if file is pdf
+    print("File is not pdf")
+    exit(1)
+else:
+    doc_file_path = pdf_file_path.replace(".pdf", ".doc")
+    print("Converting pdf to doc...")
+    print('-'*50)
 
+    if convert_pdf_to_doc(pdf_file_path, doc_file_path):
+        print("Doc conversion successful!\n")
+    
+    print("Converting doc to audio...\n")
+    tts = gTTS(text=docx2txt.process(doc_file_path), lang="en")
+    tts.save(pdf_file_path.replace(".pdf", ".mp3"))
+    print("Audio conversion successful!\n")
+
+print("Cleaning...")
+os.remove(doc_file_path)
 print("Done")
