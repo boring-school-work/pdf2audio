@@ -13,3 +13,4 @@ requests
 six
 termcolor
 urllib3
+cython
