@@ -5,7 +5,7 @@ from gtts import gTTS
 import os.path
 
 
-def convert_pdf_to_doc(pdf_file_path: str, doc_file_path: str) -> Tuple[str, str]:
+def pdf_to_doc(pdf_file_path: str, doc_file_path: str) -> Tuple[str, str]:
     """
     convert pdf file to doc file
     :param pdf_file_path: pdf file path
@@ -31,9 +31,9 @@ else:
     print("Converting pdf to doc...")
     print('-'*50)
 
-    if convert_pdf_to_doc(pdf_file_path, doc_file_path):
+    if pdf_to_doc(pdf_file_path, doc_file_path):
         print("Doc conversion successful!\n")
-    
+
     print("Converting doc to audio...\n")
     tts = gTTS(text=docx2txt.process(doc_file_path), lang="en")
     tts.save(pdf_file_path.replace(".pdf", ".mp3"))
